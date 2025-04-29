@@ -51,17 +51,18 @@ struct SinglyLinkedList {
         }
         return {nullptr, nullptr};
     }
-
     void removeAfter(Node<T>* node) {
         if (!node) {
-            if (head) {
-                Node<T>* temp = head;
-                head = head->next;
-                delete temp;
-                if (!head) tail = nullptr;
-                --size;
-            }
-        } else if (node->next) {
+            assert(head != nullptr && "Attempting to remove from an empty list!");
+    
+            Node<T>* temp = head;
+            head = head->next;
+            delete temp;
+            if (!head) tail = nullptr;
+            --size;
+        } else {
+            assert(node->next != nullptr && "Attempting to remove after the last node!");
+    
             Node<T>* temp = node->next;
             node->next = temp->next;
             if (temp == tail) tail = node;
