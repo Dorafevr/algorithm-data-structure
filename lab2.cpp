@@ -161,9 +161,9 @@ void test(std::span<int> arr, int target) {
   
 int main()
 {
-    std::vector<int> sortedArray = {1, 3, 5, 7, 9, 11, 13, 15};
-    std::vector<int> reverseSortedArray = {15, 13, 11, 9, 7, 5, 3, 1};
-    std::vector<int> randomArray = {7, 1, 9, 3, 5, 15, 11, 13};
+    std::vector<int> sortedArray = {1000, 3, 500, 780, 9, 1190, 13, 15};
+    std::vector<int> reverseSortedArray = {15, 13, 11, 9, 7, 5, 3, 100000};
+    std::vector<int> randomArray = {7, 1, 978, 3, 5, 15, 11, 13};
 
     std::cout << " sorted array:";
     test (sortedArray, 7);
@@ -176,6 +176,19 @@ int main()
  
     std::array arr = {1, 5, 7, 10, 15, 32, 89};
     SearchResult result = binarySearch(arr, 0);
+
+    std::vector<int> sortedRandomArray = randomArray;
+    std::sort(sortedRandomArray.begin(), sortedRandomArray.end());
+
+    std::vector<int> sortedReverseArray = reverseSortedArray;
+    std::sort(sortedReverseArray.begin(), sortedReverseArray.end());
+
+    std::cout << "\nSorted random array: ";
+    for (int v : sortedRandomArray) std::cout << v << " ";
+
+    std::cout << "\nSorted reverse array: ";
+    for (int v : sortedReverseArray) std::cout << v << " ";
+
 
     if (result.isElementFound)
     {
